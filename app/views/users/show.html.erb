@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+
+<%= form_for Message.new, remote: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :sender_id,  value: current_user.id %>
+    <%= f.hidden_field :reciver_id, value: current_user.id %>
+    <%= f.submit "Send" %>
+<% end %>
